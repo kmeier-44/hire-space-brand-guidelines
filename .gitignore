@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Local dev config (Claude Code / preview server)
+.claude/
+
+# Generated PDF snapshot — regenerate with ./generate-pdf.sh
+# Uncomment this line if you DO want to commit the PDF so visitors don't
+# need to regenerate. Leaving it tracked means every HTML edit will produce
+# a ~9MB diff. Recommended: keep it ignored.
+# hire-space-brand-guidelines.pdf
+
+# Commercial font files — must never be committed
+fonts/brandon-*
+fonts/proxima-*
+fonts/Brandon_*
+fonts/ProximaNova*
+fonts/*.otf.license
