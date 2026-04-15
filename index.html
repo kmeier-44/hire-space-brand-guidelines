@@ -1381,6 +1381,14 @@
     color: var(--slate);
     line-height: 1.5;
   }
+  .type-meta2 a {
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 168, 44, 0.35);
+  }
+  .type-meta2 a:hover {
+    border-bottom-color: var(--green);
+  }
 
   /* ------- Back cover ------- */
 
@@ -2142,28 +2150,28 @@
       <div class="type-label">Primary heading</div>
       <div class="type-name" style="font-family: var(--heading); font-weight: 900;">Brandon Grotesque</div>
       <div class="type-display" style="font-family: var(--heading); font-weight: 900;">Aa Bb Cc</div>
-      <div class="type-meta2">Black 900 · Bold 700 · Medium 500 · Regular 400. Licensed via Adobe Fonts.</div>
+      <div class="type-meta2">Black 900 · Bold 700 · Regular 400. Self-hosted: <a href="https://hirespace.com/fonts/brandon-grotesque-900.woff2">900</a> · <a href="https://hirespace.com/fonts/brandon-grotesque-700.woff2">700</a> · <a href="https://hirespace.com/fonts/brandon-grotesque-400.woff2">400</a>.</div>
     </div>
 
     <div class="type-card">
       <div class="type-label">Primary body</div>
       <div class="type-name" style="font-family: 'Proxima Nova', var(--body); font-weight: 700;">Proxima Nova</div>
       <div class="type-display" style="font-family: 'Proxima Nova', var(--body); font-weight: 700;">Aa Bb Cc</div>
-      <div class="type-meta2">Bold 700 · Semibold 600 · Regular 400. Licensed via Adobe Fonts. Use for all design work.</div>
+      <div class="type-meta2">Bold 700 · Semibold 600 · Regular 400. Self-hosted: <a href="https://hirespace.com/fonts/proxima-nova-700.woff2">700</a> · <a href="https://hirespace.com/fonts/proxima-nova-600.woff2">600</a> · <a href="https://hirespace.com/fonts/proxima-nova-400.woff2">400</a>.</div>
     </div>
 
     <div class="type-card">
-      <div class="type-label">Web-safe heading</div>
+      <div class="type-label">Alternative heading</div>
       <div class="type-name" style="font-family: 'Work Sans', var(--heading); font-weight: 800;">Work Sans ExtraBold</div>
       <div class="type-display" style="font-family: 'Work Sans', var(--heading); font-weight: 800;">Aa Bb Cc</div>
-      <div class="type-meta2">Free from Google Fonts. Closest match to Brandon when Adobe Fonts is unavailable.</div>
+      <div class="type-meta2">Free from <a href="https://fonts.google.com/specimen/Work+Sans">Google Fonts</a>. Closest match to Brandon when the commercial face is unavailable.</div>
     </div>
 
     <div class="type-card">
-      <div class="type-label">Web-safe body</div>
+      <div class="type-label">Alternative body</div>
       <div class="type-name" style="font-family: 'Open Sans', var(--body); font-weight: 700;">Open Sans</div>
       <div class="type-display" style="font-family: 'Open Sans', var(--body); font-weight: 700;">Aa Bb Cc</div>
-      <div class="type-meta2">Free from Google Fonts. Used across hirespace.com. Body fallback for Proxima Nova.</div>
+      <div class="type-meta2">Free from <a href="https://fonts.google.com/specimen/Open+Sans">Google Fonts</a>. Used across hirespace.com. Body fallback for Proxima Nova.</div>
     </div>
   </div>
 
@@ -2255,44 +2263,68 @@
       <div class="icon-container">
         <div class="type-meta">Outlined · default for inline and navigation</div>
         <div class="icon-grid">
-          <svg viewBox="0 0 64 64"><rect x="6" y="14" width="52" height="36" rx="3"/><path d="M6 18 L32 38 L58 18"/></svg>
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24"/><path d="M32 16 V32 L44 40"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M32 6 C20 6 12 16 12 26 C12 40 32 58 32 58 C32 58 52 40 52 26 C52 16 44 6 32 6 Z"/><circle cx="32" cy="26" r="5"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M14 54 V20 L32 8 L50 20 V54 Z"/><path d="M26 54 V38 H38 V54"/></svg>
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"/><path d="M10 56 C10 40 54 40 54 56"/></svg>
+          <!-- Microphone -->
+          <svg viewBox="0 0 64 64"><rect x="26" y="8" width="12" height="30" rx="6"/><path d="M18 30 C18 42 24 46 32 46 C40 46 46 42 46 30"/><path d="M32 46 V56"/><path d="M22 56 H42"/></svg>
+          <!-- Champagne coupe -->
+          <svg viewBox="0 0 64 64"><path d="M16 14 H48 C46 28 40 36 32 36 C24 36 18 28 16 14 Z"/><path d="M32 36 V52"/><path d="M22 54 H42"/></svg>
+          <!-- Calendar -->
           <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="3"/><path d="M8 24 H56"/><path d="M20 8 V18 M44 8 V18"/></svg>
+          <!-- Location pin -->
+          <svg viewBox="0 0 64 64"><path d="M32 6 C20 6 12 16 12 26 C12 40 32 58 32 58 C32 58 52 40 52 26 C52 16 44 6 32 6 Z"/><circle cx="32" cy="26" r="5"/></svg>
+          <!-- Ticket -->
+          <svg viewBox="0 0 64 64"><path d="M6 22 V30 C10 30 10 38 6 38 V46 H58 V38 C54 38 54 30 58 30 V22 Z"/><path d="M26 26 V42"/></svg>
+          <!-- Stage spotlight -->
+          <svg viewBox="0 0 64 64"><rect x="22" y="8" width="20" height="10" rx="2"/><path d="M20 18 L10 52 H54 L44 18 Z"/></svg>
         </div>
         <div class="icon-grid second-row">
-          <svg viewBox="0 0 64 64"><circle cx="28" cy="28" r="18"/><path d="M42 42 L56 56"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M8 12 H56 V42 H36 L24 54 V42 H8 Z"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M6 48 L20 30 L32 38 L50 14"/><path d="M38 14 L50 14 L50 26"/></svg>
-          <svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="3"/><path d="M18 32 L28 42 L46 22"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M6 32 C6 18 58 18 58 32 C58 46 6 46 6 32 Z"/><circle cx="32" cy="32" r="4"/></svg>
-          <svg viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="3"/><path d="M22 30 L28 30 L28 44 M36 30 L36 44 L44 44"/></svg>
+          <!-- Disco ball -->
+          <svg viewBox="0 0 64 64"><path d="M32 6 V12"/><circle cx="32" cy="30" r="18"/><path d="M14 30 H50 M32 12 V48 M19 17 L45 43 M45 17 L19 43"/></svg>
+          <!-- Trophy -->
+          <svg viewBox="0 0 64 64"><path d="M18 10 H46 V22 C46 32 38 38 32 38 C26 38 18 32 18 22 Z"/><path d="M18 14 H10 V20 C10 26 14 28 18 28"/><path d="M46 14 H54 V20 C54 26 50 28 46 28"/><path d="M32 38 V48"/><path d="M22 54 H42 V48 H22 Z"/></svg>
+          <!-- Chair -->
+          <svg viewBox="0 0 64 64"><path d="M16 22 V14 C16 10 20 8 24 8 H40 C44 8 48 10 48 14 V22"/><rect x="12" y="22" width="40" height="14" rx="2"/><path d="M18 36 V54"/><path d="M46 36 V54"/></svg>
+          <!-- Presentation screen -->
+          <svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="34" rx="2"/><path d="M32 44 V56"/><path d="M22 56 H42"/><path d="M16 32 L26 22 L34 28 L48 16"/></svg>
+          <!-- Canapés on plate -->
+          <svg viewBox="0 0 64 64"><ellipse cx="32" cy="42" rx="26" ry="6"/><path d="M6 42 C6 30 58 30 58 42"/><circle cx="22" cy="32" r="4"/><circle cx="32" cy="30" r="4"/><circle cx="42" cy="32" r="4"/></svg>
+          <!-- Balloons -->
+          <svg viewBox="0 0 64 64"><circle cx="22" cy="20" r="12"/><circle cx="42" cy="26" r="12"/><path d="M22 32 L26 54"/><path d="M42 38 L38 54"/></svg>
         </div>
       </div>
 
       <div class="icon-container">
         <div class="type-meta">Filled · for emphasis or small sizes</div>
         <div class="icon-grid filled">
-          <svg viewBox="0 0 64 64"><path d="M6 14 H58 V50 H6 Z" class="solid"/><path d="M6 18 L32 38 L58 18" stroke="white" stroke-width="3" fill="none"/></svg>
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" class="solid"/><path d="M32 18 V32 L42 38" stroke="white" stroke-width="3" fill="none"/></svg>
+          <!-- Microphone -->
+          <svg viewBox="0 0 64 64"><rect x="26" y="8" width="12" height="30" rx="6" class="solid"/><path d="M18 30 C18 42 24 46 32 46 C40 46 46 42 46 30" stroke-width="4"/><path d="M32 46 V56"/><path d="M22 56 H42"/></svg>
+          <!-- Champagne coupe -->
+          <svg viewBox="0 0 64 64"><path d="M16 14 H48 C46 28 40 36 32 36 C24 36 18 28 16 14 Z" class="solid"/><path d="M32 36 V52"/><path d="M22 54 H42"/></svg>
+          <!-- Calendar -->
+          <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="3" class="solid"/><path d="M8 24 H56" stroke="white" stroke-width="3" fill="none"/><path d="M20 8 V18 M44 8 V18"/></svg>
+          <!-- Location pin -->
           <svg viewBox="0 0 64 64"><path d="M32 6 C20 6 12 16 12 26 C12 40 32 58 32 58 C32 58 52 40 52 26 C52 16 44 6 32 6 Z" class="solid"/><circle cx="32" cy="26" r="5" fill="white"/></svg>
-          <svg viewBox="0 0 64 64"><path d="M14 54 V20 L32 8 L50 20 V54 Z" class="solid"/><path d="M26 54 V38 H38 V54" stroke="white" stroke-width="3" fill="none"/></svg>
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="10" class="solid"/><path d="M10 56 C10 40 54 40 54 56" class="solid"/></svg>
-          <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="3" class="solid"/><path d="M8 24 H56" stroke="white" stroke-width="3" fill="none"/><path d="M20 8 V18 M44 8 V18" stroke-width="3"/></svg>
+          <!-- Ticket -->
+          <svg viewBox="0 0 64 64"><path d="M6 22 V30 C10 30 10 38 6 38 V46 H58 V38 C54 38 54 30 58 30 V22 Z" class="solid"/><path d="M26 26 V42" stroke="white" stroke-width="3" fill="none"/></svg>
+          <!-- Stage spotlight -->
+          <svg viewBox="0 0 64 64"><rect x="22" y="8" width="20" height="10" rx="2" class="solid"/><path d="M20 18 L10 52 H54 L44 18 Z" class="solid"/></svg>
         </div>
       </div>
 
       <div class="icon-container">
         <div class="type-meta">In a circle · feature call-outs, stats, key moments</div>
         <div class="icon-circle-grid">
-          <div class="iconc"><svg viewBox="0 0 64 64"><rect x="10" y="18" width="44" height="32" rx="3"/><path d="M10 22 L32 38 L54 22"/></svg></div>
-          <div class="iconc"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"/><path d="M32 18 V32 L42 38"/></svg></div>
-          <div class="iconc"><svg viewBox="0 0 64 64"><path d="M32 10 C22 10 14 18 14 28 C14 40 32 56 32 56 C32 56 50 40 50 28 C50 18 42 10 32 10 Z"/></svg></div>
-          <div class="iconc"><svg viewBox="0 0 64 64"><path d="M16 52 V22 L32 12 L48 22 V52 Z"/><path d="M26 52 V38 H38 V52"/></svg></div>
-          <div class="iconc"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="9"/><path d="M14 54 C14 40 50 40 50 54"/></svg></div>
+          <!-- Microphone -->
+          <div class="iconc"><svg viewBox="0 0 64 64"><rect x="26" y="10" width="12" height="28" rx="6"/><path d="M18 30 C18 42 24 46 32 46 C40 46 46 42 46 30"/><path d="M32 46 V54"/><path d="M24 54 H40"/></svg></div>
+          <!-- Champagne coupe -->
+          <div class="iconc"><svg viewBox="0 0 64 64"><path d="M18 14 H46 C44 28 39 34 32 34 C25 34 20 28 18 14 Z"/><path d="M32 34 V50"/><path d="M24 52 H40"/></svg></div>
+          <!-- Calendar -->
           <div class="iconc"><svg viewBox="0 0 64 64"><rect x="12" y="16" width="40" height="36" rx="3"/><path d="M12 26 H52"/><path d="M22 12 V20 M42 12 V20"/></svg></div>
+          <!-- Location pin -->
+          <div class="iconc"><svg viewBox="0 0 64 64"><path d="M32 10 C22 10 14 18 14 28 C14 40 32 56 32 56 C32 56 50 40 50 28 C50 18 42 10 32 10 Z"/><circle cx="32" cy="26" r="4"/></svg></div>
+          <!-- Ticket -->
+          <div class="iconc"><svg viewBox="0 0 64 64"><path d="M10 24 V30 C14 30 14 38 10 38 V44 H54 V38 C50 38 50 30 54 30 V24 Z"/><path d="M28 28 V40"/></svg></div>
+          <!-- Stage spotlight -->
+          <div class="iconc"><svg viewBox="0 0 64 64"><rect x="24" y="12" width="16" height="8" rx="2"/><path d="M22 20 L14 50 H50 L42 20 Z"/></svg></div>
         </div>
       </div>
     </div>
