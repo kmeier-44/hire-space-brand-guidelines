@@ -1303,38 +1303,59 @@
     font-size: 10px;
   }
   .icon-grid.second-row {
-    margin-top: 14px;
+    margin-top: 24px;
   }
   .icon-grid.filled i {
     color: var(--green);
   }
 
   /* ------- Icon bullet list ------- */
+  .bullet-samples {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
   .icon-bullets {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 11px;
+    line-height: 1.35;
     color: var(--ink);
   }
   .icon-bullets li {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 6px 0;
+    gap: 8px;
+    padding: 5px 0;
   }
-  .icon-bullets li + li {
-    border-top: 1px solid rgba(12, 19, 24, 0.06);
+  .icon-bullets.dots li {
+    padding-left: 2px;
+  }
+  .icon-bullets.dots li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .icon-bullets.arrows li i {
+    color: var(--green);
+    font-size: 13px;
+    flex-shrink: 0;
   }
   .iconc.sm {
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     margin: 0;
     flex-shrink: 0;
   }
+  .iconc.sm.no {
+    background: var(--ink);
+  }
   .iconc.sm i {
-    font-size: 11px;
+    font-size: 9px;
   }
 
   /* ------- Typography slide layout ------- */
@@ -2244,14 +2265,14 @@
   <span class="eyebrow">Iconography</span>
   <div class="two-col" style="grid-template-columns: 1fr 1.3fr;">
     <div>
-      <h2 style="max-width:14ch; margin-bottom:14px;">Bold line icons, sometimes in a circle</h2>
+      <h2 style="max-width:14ch; margin-bottom:14px;">Bold icons, sometimes in a circle</h2>
       <p style="font-size:14px; line-height:1.55;">Icons are how we signal at a glance. They support a headline or a stat, they don’t try to carry the content themselves.</p>
       <p style="font-size:14px; line-height:1.55;"><strong>House rules:</strong></p>
       <ul class="icon-rules" style="font-size:13px;">
         <li>Use <a href="https://fontawesome.com/search?o=r&amp;s=solid&amp;f=classic" style="color:var(--green); text-decoration:none; border-bottom:1px solid rgba(0,168,44,0.35);">Font Awesome Solid</a> as the default set.</li>
         <li>Dark ink for inline and navigation.</li>
         <li>White on a green circle for stats, feature call-outs or key moments.</li>
-        <li>In bulleted lists, replace the bullet with a small green circled icon that matches each line.</li>
+        <li>In bulleted lists, stick to ticks and crosses in a circle, small green dots or a plain green arrow. Don’t mix different icons per line.</li>
         <li>Stick to one treatment per page, don’t mix them up.</li>
       </ul>
     </div>
@@ -2289,13 +2310,24 @@
       </div>
 
       <div class="icon-container">
-        <div class="type-meta">In a bulleted list · swap the bullet for a small green circled icon</div>
-        <ul class="icon-bullets">
-          <li><span class="iconc sm"><i class="fa-solid fa-microphone-lines"></i></span>Keynote stage, clear audio in every room</li>
-          <li><span class="iconc sm"><i class="fa-solid fa-champagne-glasses"></i></span>Welcome drinks on arrival, bar stocked to brief</li>
-          <li><span class="iconc sm"><i class="fa-solid fa-utensils"></i></span>Catering aligned to dietary needs and timings</li>
-          <li><span class="iconc sm"><i class="fa-solid fa-users"></i></span>On-site host to meet, greet and troubleshoot</li>
-        </ul>
+        <div class="type-meta">In bulleted lists · tick and cross, small dots or an arrow. Nothing else</div>
+        <div class="bullet-samples">
+          <ul class="icon-bullets tickcross">
+            <li><span class="iconc sm ok"><i class="fa-solid fa-check"></i></span>Every venue, indie to landmark</li>
+            <li><span class="iconc sm ok"><i class="fa-solid fa-check"></i></span>Know what it costs up front</li>
+            <li><span class="iconc sm no"><i class="fa-solid fa-xmark"></i></span>No endless back and forth</li>
+          </ul>
+          <ul class="icon-bullets dots">
+            <li>Keynote stage and AV</li>
+            <li>Catering aligned to brief</li>
+            <li>On-site host for the day</li>
+          </ul>
+          <ul class="icon-bullets arrows">
+            <li><i class="fa-solid fa-arrow-right"></i>Shortlist in a day</li>
+            <li><i class="fa-solid fa-arrow-right"></i>Book in a week</li>
+            <li><i class="fa-solid fa-arrow-right"></i>Run the event</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
