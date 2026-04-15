@@ -1446,9 +1446,20 @@
     background: var(--green);
     border-color: var(--green);
     color: var(--white);
-    font-weight: 600;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms, border-color 120ms, transform 120ms;
   }
-  .nav-bar .nav-download:hover { background: var(--green-hover); border-color: var(--green-hover); }
+  .nav-bar .nav-download:hover {
+    background: var(--green-hover);
+    border-color: var(--green-hover);
+    transform: translateY(-1px);
+  }
+  .nav-bar .nav-download svg { display: block; }
   .nav-bar .pill { opacity: 0.7; }
 
   @page {
@@ -2318,7 +2329,7 @@
   <button onclick="nav(-1)">←</button>
   <span class="pill"><span id="cur">1</span> / <span id="tot">22</span></span>
   <button onclick="nav(1)">→</button>
-  <a href="./hire-space-brand-guidelines.pdf" download="Hire-Space-Brand-Guidelines.pdf" class="nav-download" title="Download as PDF">Download PDF</a>
+  <a href="./hire-space-brand-guidelines.pdf" download="Hire-Space-Brand-Guidelines.pdf" class="nav-download" title="Download as PDF" aria-label="Download as PDF"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg></a>
 </div>
 
 <script>
