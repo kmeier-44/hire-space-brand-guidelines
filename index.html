@@ -1309,6 +1309,34 @@
     color: var(--green);
   }
 
+  /* ------- Icon bullet list ------- */
+  .icon-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .icon-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+  }
+  .icon-bullets li + li {
+    border-top: 1px solid rgba(12, 19, 24, 0.06);
+  }
+  .iconc.sm {
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .iconc.sm i {
+    font-size: 11px;
+  }
+
   /* ------- Typography slide layout ------- */
   .type-layout {
     display: grid;
@@ -2216,15 +2244,15 @@
   <span class="eyebrow">Iconography</span>
   <div class="two-col" style="grid-template-columns: 1fr 1.3fr;">
     <div>
-      <h2 style="max-width:14ch; margin-bottom:14px;">Font Awesome Solid, picked for events</h2>
+      <h2 style="max-width:14ch; margin-bottom:14px;">Bold line icons, sometimes in a circle</h2>
       <p style="font-size:14px; line-height:1.55;">Icons are how we signal at a glance. They support a headline or a stat, they don’t try to carry the content themselves.</p>
       <p style="font-size:14px; line-height:1.55;"><strong>House rules:</strong></p>
       <ul class="icon-rules" style="font-size:13px;">
         <li>Use <a href="https://fontawesome.com/search?o=r&amp;s=solid&amp;f=classic" style="color:var(--green); text-decoration:none; border-bottom:1px solid rgba(0,168,44,0.35);">Font Awesome Solid</a> as the default set.</li>
         <li>Dark ink for inline and navigation.</li>
-        <li>Green for emphasis on features or benefits.</li>
         <li>White on a green circle for stats, feature call-outs or key moments.</li>
-        <li>Stick to one treatment per page, don’t mix all three.</li>
+        <li>In bulleted lists, replace the bullet with a small green circled icon that matches each line.</li>
+        <li>Stick to one treatment per page, don’t mix them up.</li>
       </ul>
     </div>
     <div>
@@ -2249,18 +2277,6 @@
       </div>
 
       <div class="icon-container">
-        <div class="type-meta">Green · for emphasis on features or benefits</div>
-        <div class="icon-grid filled">
-          <i class="fa-solid fa-microphone-lines"></i>
-          <i class="fa-solid fa-champagne-glasses"></i>
-          <i class="fa-solid fa-calendar-days"></i>
-          <i class="fa-solid fa-location-dot"></i>
-          <i class="fa-solid fa-ticket"></i>
-          <i class="fa-solid fa-utensils"></i>
-        </div>
-      </div>
-
-      <div class="icon-container">
         <div class="type-meta">In a circle · stats, feature call-outs, key moments</div>
         <div class="icon-circle-grid">
           <div class="iconc"><i class="fa-solid fa-microphone-lines"></i></div>
@@ -2270,6 +2286,16 @@
           <div class="iconc"><i class="fa-solid fa-ticket"></i></div>
           <div class="iconc"><i class="fa-solid fa-utensils"></i></div>
         </div>
+      </div>
+
+      <div class="icon-container">
+        <div class="type-meta">In a bulleted list · swap the bullet for a small green circled icon</div>
+        <ul class="icon-bullets">
+          <li><span class="iconc sm"><i class="fa-solid fa-microphone-lines"></i></span>Keynote stage, clear audio in every room</li>
+          <li><span class="iconc sm"><i class="fa-solid fa-champagne-glasses"></i></span>Welcome drinks on arrival, bar stocked to brief</li>
+          <li><span class="iconc sm"><i class="fa-solid fa-utensils"></i></span>Catering aligned to dietary needs and timings</li>
+          <li><span class="iconc sm"><i class="fa-solid fa-users"></i></span>On-site host to meet, greet and troubleshoot</li>
+        </ul>
       </div>
     </div>
   </div>
