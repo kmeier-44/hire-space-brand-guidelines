@@ -119,6 +119,23 @@
     /* Slide dimensions */
     --slide-w: 1280px;
     --slide-h: 800px;
+
+    /* Typography scale — single source of truth for font sizes.
+       Default h2 is 40px, compact h2 is 32px. Body default 14px.
+       Card body 12px. Caption 11px. Micro/label 10px. */
+    --fs-section:   96px;
+    --fs-display:   72px;
+    --fs-h1:        48px;
+    --fs-h2:        40px;
+    --fs-h2-tight:  32px;
+    --fs-h3:        24px;
+    --fs-h4:        16px;
+    --fs-lead:      17px;
+    --fs-body:      14px;
+    --fs-small:     12px;
+    --fs-micro:     11px;
+    --fs-label:     10px;
+    --fs-eyebrow:   11px;
   }
 
   * { box-sizing: border-box; }
@@ -179,19 +196,36 @@
     margin: 0 0 0.6em;
     color: inherit;
   }
-  h1 { font-size: 68px; font-weight: 800; letter-spacing: -0.02em; }
-  h2 { font-size: 48px; }
-  h3 { font-size: 32px; font-weight: 700; }
-  h4 { font-size: 22px; font-weight: 700; }
-  p  { font-size: 17px; line-height: 1.6; margin: 0 0 1em; max-width: 62ch; }
-  .lead { font-size: 22px; line-height: 1.5; max-width: 60ch; }
+  h1 { font-size: var(--fs-h1); font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: var(--fs-h2); }
+  h3 { font-size: var(--fs-h3); font-weight: 700; }
+  h4 { font-size: var(--fs-h4); font-weight: 700; }
+  p  { font-size: var(--fs-lead); line-height: 1.6; margin: 0 0 1em; max-width: 62ch; }
+
+  /* Canonical subtitle tiers. Always use one of these classes on the
+     paragraph directly under an h2. Never inline font-size or max-width
+     on those paragraphs. */
+  .lead, .slide-lead {
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    max-width: 64ch;
+    color: var(--slate);
+    margin: 0 0 24px;
+  }
+  .slide-sub {
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--slate);
+    max-width: none;
+    margin: 0 0 16px;
+  }
   strong { font-weight: 700; }
 
   .eyebrow {
     display: inline-block;
     font-family: var(--heading);
     font-weight: 600;
-    font-size: 13px;
+    font-size: var(--fs-eyebrow);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--slate);
@@ -410,9 +444,9 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 8px 14px;
+    padding: 6px 14px;
     border-bottom: 1px solid var(--line);
-    font-family: var(--heading);
+    font-family: var(--body);
     break-inside: avoid;
     text-decoration: none;
     color: inherit;
@@ -428,7 +462,7 @@
     font-size: 15px; font-weight: 500; color: var(--slate);
     font-variant-numeric: tabular-nums;
   }
-  a.toc-row .label { font-size: 16px; font-weight: 600; color: var(--ink); transition: color 120ms; }
+  a.toc-row .label { font-size: 15px; font-weight: 600; color: var(--ink); transition: color 120ms; }
   .toc-section {
     font-family: var(--heading);
     font-size: 12px; font-weight: 700; color: var(--green);
@@ -722,6 +756,7 @@
     color: var(--slate);
   }
   .tier-footnote strong { color: var(--ink); font-weight: 600; }
+
   .brand-card.hs360 .inc-list li::before { color: var(--green); }
   .brand-card .card-foot {
     margin-top: 10px;
@@ -921,6 +956,89 @@
     min-height: 170px;
     position: relative;
     padding: 36px 24px 40px;
+  }
+  .logo-grid.compact {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .logo-grid.compact .logo-well {
+    min-height: 92px;
+    padding: 18px 14px 24px;
+  }
+  .logo-grid.compact .logo-well .cap {
+    bottom: 8px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .logo-section-label {
+    font-family: var(--heading);
+    font-size: var(--fs-label);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 2px;
+  }
+  .logo-callout {
+    background: var(--paper-2);
+    border-left: 3px solid var(--green);
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .logo-callout .lc-label {
+    font-family: var(--heading);
+    font-size: var(--fs-label);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .logo-callout p {
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: none;
+  }
+  .asset-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 120ms;
+  }
+  .asset-link:hover { background: var(--ink-2); }
+  .asset-link .al-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .asset-link .al-icon i { font-size: 13px; color: var(--white); }
+  .asset-link .al-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .asset-link .al-text strong {
+    font-family: var(--heading);
+    font-size: var(--fs-body);
+    font-weight: 700;
+    color: var(--white);
+  }
+  .asset-link .al-text span {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.3;
   }
   .logo-well {
     display: grid;
@@ -1599,6 +1717,267 @@
     main { padding-left: 16px; padding-right: 16px; }
     .slide { width: 100%; max-width: var(--slide-w); }
   }
+
+  /* ------- NEW SLIDES (audiences, boilerplate, co-brand, a11y, in-use) ------- */
+  .persona-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 14px; margin-top: 14px;
+  }
+  .persona {
+    background: var(--paper); padding: 16px 18px;
+    box-shadow: var(--shadow-1);
+    display: flex; flex-direction: column; gap: 6px;
+    border-left: 3px solid var(--green);
+  }
+  .persona .p-badge {
+    font-size: 9px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green);
+  }
+  .persona h4 {
+    font-size: 15px; margin: 0 0 2px; color: var(--ink); font-weight: 700;
+  }
+  .persona .p-quote {
+    font-size: 12px; line-height: 1.4; font-style: italic;
+    color: var(--slate); margin: 4px 0;
+  }
+  .persona .p-what, .persona .p-how {
+    font-size: 11px; line-height: 1.45; color: var(--ink-2); margin: 0;
+  }
+  .persona .p-how { color: var(--slate); margin-top: 2px; }
+
+  /* ------- Boilerplate ------- */
+  .boiler-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 16px; margin-top: 16px;
+  }
+  .boiler {
+    background: var(--paper); padding: 20px 22px; box-shadow: var(--shadow-1);
+  }
+  .boiler.rules { grid-column: 1 / -1; }
+  .boiler .b-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green); margin-bottom: 10px;
+  }
+  .boiler .b-text {
+    font-family: var(--body); font-size: var(--fs-lead); line-height: 1.5;
+    font-weight: 600; color: var(--ink); margin: 0;
+  }
+  .boiler.rules .b-text { font-size: var(--fs-body); font-weight: 400; }
+  .boiler .b-rules {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px;
+    font-size: 13px; line-height: 1.45; color: var(--ink-2);
+  }
+  .boiler .b-rules li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    font-size: 9px; color: var(--green); margin-right: 8px;
+  }
+
+  /* ------- Logo lockups ------- */
+  .lockup-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px;
+  }
+  .lockup {
+    background: var(--paper); padding: 18px 20px; box-shadow: var(--shadow-1);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .lockup-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green);
+  }
+  .lockup-visual {
+    background: #F6F6F4; padding: 28px 20px; display: flex;
+    align-items: center; justify-content: center; gap: 14px;
+    min-height: 80px;
+  }
+  .lockup-visual.small { min-height: 60px; padding: 16px; }
+  .lockup-bar {
+    display: inline-block; width: 1px; height: 28px;
+    background: rgba(12,19,24,0.18); color: rgba(12,19,24,0.35);
+    font-size: 16px; line-height: 28px; text-align: center; width: auto;
+    padding: 0 4px; background: transparent;
+  }
+  .partner-placeholder {
+    font-family: var(--heading); font-size: 14px; font-weight: 800;
+    color: rgba(12,19,24,0.35); text-transform: uppercase; letter-spacing: 0.1em;
+    border: 1.5px dashed rgba(12,19,24,0.2); padding: 6px 14px; border-radius: 3px;
+  }
+  .powered-by {
+    font-size: 11px; color: var(--slate); font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .lockup-note {
+    font-size: 12px; line-height: 1.45; color: var(--slate); margin: 0;
+  }
+
+  /* ------- Accessibility ------- */
+  .a11y-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+    margin-top: 16px;
+  }
+  .a11y-card {
+    background: var(--paper); padding: 18px 20px; box-shadow: var(--shadow-1);
+    border-top: 3px solid var(--green);
+  }
+  .a11y-card:nth-child(n+4) { grid-column: span 1; }
+  .a11y-num {
+    font-family: var(--heading); font-size: 24px; font-weight: 900;
+    color: var(--green); line-height: 1; margin-bottom: 8px;
+  }
+  .a11y-card h4 {
+    font-size: 14px; margin: 0 0 6px; color: var(--ink);
+  }
+  .a11y-card p {
+    font-size: 11px; line-height: 1.5; color: var(--ink-2); margin: 0;
+  }
+  .a11y-swatch-row {
+    display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .a11y-swatch {
+    font-size: 10px; padding: 4px 8px; border-radius: 2px; font-weight: 600;
+  }
+  .a11y-swatch.ink { background: var(--ink); color: var(--white); }
+  .a11y-swatch.green { background: var(--green); color: var(--white); }
+  .a11y-swatch.fail { background: #F6F6F4; color: #B8B8B8; text-decoration: line-through; }
+
+  /* ------- Accessibility (visual version) ------- */
+  .a11y-visual-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
+    margin-top: 20px;
+  }
+  .a11y-visual-card {
+    background: var(--paper); padding: 18px 20px; box-shadow: var(--shadow-1);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .a11y-visual-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green);
+  }
+  .a11y-compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .a11y-demo {
+    padding: 14px 12px; border-radius: 3px;
+    background: #F6F6F4; position: relative;
+    display: flex; flex-direction: column; gap: 8px;
+    min-height: 100px;
+  }
+  .a11y-demo .demo-headline {
+    font-family: var(--heading); font-weight: 800; font-size: 14px;
+    line-height: 1.15; color: var(--ink);
+  }
+  .a11y-demo .demo-headline.faint { color: rgba(12,19,24,0.22); }
+  .a11y-demo .demo-body {
+    font-size: 10px; line-height: 1.4; color: var(--ink-2);
+  }
+  .a11y-demo .demo-body.faint { color: rgba(12,19,24,0.22); }
+  .a11y-demo .demo-badge {
+    position: absolute; top: 8px; right: 8px;
+    font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+  }
+  .demo-badge.tick { background: var(--green); color: var(--white); }
+  .demo-badge.cross { background: #C62828; color: var(--white); }
+  .a11y-demo .status-row {
+    font-size: 11px; display: flex; align-items: center; gap: 8px;
+    color: var(--ink);
+  }
+  .a11y-demo .dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .a11y-demo .dot.red-dot { background: #C62828; }
+  .a11y-demo .dot.green-dot { background: var(--green); }
+  .a11y-demo .red-ico { color: #C62828; width: 12px; font-size: 11px; }
+  .a11y-demo .green-ico { color: var(--green); width: 12px; font-size: 11px; }
+  .a11y-note {
+    font-size: 11px; line-height: 1.45; color: var(--slate); margin: 0;
+  }
+  .alt-frame {
+    display: flex; gap: 10px;
+  }
+  .alt-image {
+    width: 100px; height: 80px; flex-shrink: 0;
+    background-image: url('https://content.hirespace.com/hubfs/newsletter-images/bg-photo-candid-networking-1200x675.jpg');
+    background-size: cover; background-position: center;
+    border-radius: 2px;
+  }
+  .alt-captions {
+    display: flex; flex-direction: column; gap: 8px; font-size: 11px;
+    line-height: 1.35;
+  }
+  .alt-line { display: flex; align-items: flex-start; gap: 6px; }
+  .alt-line.bad { color: rgba(12,19,24,0.45); }
+  .alt-line.good { color: var(--ink); font-weight: 600; }
+  .alt-mark { font-weight: 800; flex-shrink: 0; }
+  .alt-mark.tick { color: var(--green); }
+  .alt-mark.cross { color: #C62828; }
+
+  /* ------- Brand in the wild (applications) ------- */
+  .wild-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 18px; margin-top: 16px;
+  }
+  .wild-card {
+    background: var(--paper); padding: 14px 16px; box-shadow: var(--shadow-1);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .w-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green);
+  }
+  .w-viz {
+    flex: 1; border-radius: 2px; padding: 14px 16px;
+  }
+  .proposal-header {
+    background: #F6F6F4; padding: 16px 18px; position: relative;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .proposal-header .proposal-eyebrow {
+    font-size: 9px; letter-spacing: 0.15em; font-weight: 800;
+    color: var(--green); margin-bottom: 2px;
+  }
+  .proposal-header .proposal-title {
+    font-family: var(--heading); font-size: 20px; font-weight: 900;
+    line-height: 1.15; color: var(--ink);
+  }
+  .proposal-header .proposal-meta {
+    font-size: 11px; color: var(--slate); margin-top: 2px;
+  }
+  .proposal-header .proposal-mark {
+    position: absolute; top: 14px; right: 16px;
+  }
+  .social-card {
+    background: var(--ink); color: var(--white);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 120px;
+    background-image: linear-gradient(165deg, rgba(12,19,24,0.92) 0%, rgba(39,48,51,0.88) 100%), url('https://content.hirespace.com/hubfs/newsletter-images/bg-photo-architecture-1200x675.jpg');
+    background-size: cover;
+  }
+  .social-card .social-eyebrow {
+    font-size: 9px; letter-spacing: 0.15em; font-weight: 800;
+    color: var(--green); margin-bottom: 6px;
+  }
+  .social-card .social-title {
+    font-family: var(--heading); font-weight: 900; font-size: 18px;
+    line-height: 1.15; color: var(--white);
+  }
+  .landing {
+    background: var(--ink); color: var(--white);
+  }
+  .landing .landing-btn {
+    display: inline-block; background: var(--green); color: var(--white);
+    padding: 6px 14px; font-size: 11px; font-weight: 700; border-radius: 3px;
+  }
+  .venue-tile {
+    background: var(--paper); padding: 0; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .venue-tile .venue-img {
+    height: 72px;
+    background-image: url('https://content.hirespace.com/hubfs/newsletter-images/bg-photo-candid-networking-1200x675.jpg');
+    background-size: cover; background-position: center;
+  }
+
 </style>
 </head>
 <body>
@@ -1659,31 +2038,35 @@
   <div class="toc">
     <div class="toc-block">
       <div class="toc-section">Part one · Who we are</div>
-      <a class="toc-row" href="#s3"><span class="label">What we are</span> <span class="n">03</span></a>
+            <a class="toc-row" href="#s3"><span class="label">What we are</span> <span class="n">03</span></a>
       <a class="toc-row" href="#s5"><span class="label">Our vision</span> <span class="n">04</span></a>
       <a class="toc-row" href="#s6"><span class="label">Our brand promise</span> <span class="n">05</span></a>
       <a class="toc-row" href="#s7"><span class="label">How we want clients to feel</span> <span class="n">06</span></a>
       <a class="toc-row" href="#s7b"><span class="label">Messaging pillars</span> <span class="n">07</span></a>
       <a class="toc-row" href="#s8"><span class="label">Service tiers</span> <span class="n">08</span></a>
+      <a class="toc-row" href="#s8b"><span class="label">Our audiences</span> <span class="n">09</span></a>
     </div>
 
     <div class="toc-block">
-      <div class="toc-section">Part two · How we sound</div>
-      <a class="toc-row" href="#s10"><span class="label">Brand voice</span> <span class="n">10</span></a>
-      <a class="toc-row" href="#s11"><span class="label">AI writing rules</span> <span class="n">11</span></a>
-      <a class="toc-row" href="#s12"><span class="label">Before and after</span> <span class="n">12</span></a>
-      <a class="toc-row" href="#s13"><span class="label">Emoji in practice</span> <span class="n">13</span></a>
+      <div class="toc-section">Part two &middot; How we sound</div>
+      <a class="toc-row" href="#s10"><span class="label">Brand voice</span> <span class="n">11</span></a>
+      <a class="toc-row" href="#s11"><span class="label">AI writing rules</span> <span class="n">12</span></a>
+      <a class="toc-row" href="#s12"><span class="label">Before and after</span> <span class="n">13</span></a>
+      <a class="toc-row" href="#s13"><span class="label">Emoji in practice</span> <span class="n">14</span></a>
+      <a class="toc-row" href="#s13b"><span class="label">What we call ourselves</span> <span class="n">15</span></a>
     </div>
 
     <div class="toc-block">
-      <div class="toc-section">Part three · How we look</div>
-      <a class="toc-row" href="#s15"><span class="label">Logo</span> <span class="n">15</span></a>
-      <a class="toc-row" href="#s16"><span class="label">Logo do's and don'ts</span> <span class="n">16</span></a>
-      <a class="toc-row" href="#s18"><span class="label">Full palette</span> <span class="n">17</span></a>
-      <a class="toc-row" href="#s19"><span class="label">Typography</span> <span class="n">18</span></a>
-      <a class="toc-row" href="#s19b"><span class="label">Elevation</span> <span class="n">19</span></a>
-      <a class="toc-row" href="#s20"><span class="label">Photography</span> <span class="n">20</span></a>
-      <a class="toc-row" href="#s21"><span class="label">Iconography</span> <span class="n">21</span></a>
+      <div class="toc-section">Part three &middot; How we look</div>
+      <a class="toc-row" href="#s15"><span class="label">Logo</span> <span class="n">17</span></a>
+      <a class="toc-row" href="#s16"><span class="label">Logo do’s and don’ts</span> <span class="n">18</span></a>
+      <a class="toc-row" href="#s18"><span class="label">Full palette</span> <span class="n">19</span></a>
+            <a class="toc-row" href="#s19"><span class="label">Typography</span> <span class="n">20</span></a>
+      <a class="toc-row" href="#s19b"><span class="label">Elevation</span> <span class="n">21</span></a>
+      <a class="toc-row" href="#s20"><span class="label">Photography</span> <span class="n">22</span></a>
+      <a class="toc-row" href="#s21"><span class="label">Iconography</span> <span class="n">23</span></a>
+      <a class="toc-row" href="#s18b"><span class="label">Accessibility</span> <span class="n">24</span></a>
+      <a class="toc-row" href="#s21b"><span class="label">Brand in the wild</span> <span class="n">25</span></a>
     </div>
   </div>
 
@@ -1697,9 +2080,9 @@
 
   <div class="hero-photo">
     <div class="words">
-      <p style="font-size:16px; line-height:1.65;">Events bring people together. That’s a simple idea, but organising one has quietly become one of the hardest jobs inside a modern business: dozens of suppliers to manage, budgets that move weekly and a week of waiting before you know whether a venue is even available. The person running the event is usually doing it on top of another full-time job.</p>
-      <p style="font-size:16px; line-height:1.65;">We set out to fix that. So we built the tech, and put an expert team behind it, to get the right venue, the right price and a real plan in front of you in minutes instead of days, whatever the scale of the event.</p>
-      <p style="margin-top:20px; font-size:17px; line-height:1.55;"><strong>Hire Space is the intelligent venue platform for business events. Not a marketplace. Not a directory. A tech-powered venue-finding platform with an expert team behind it.</strong></p>
+      <p style="font-size:var(--fs-lead); line-height:1.65;">Events bring people together. That’s a simple idea, but organising one has quietly become one of the hardest jobs inside a modern business: dozens of suppliers to manage, budgets that move weekly and a week of waiting before you know whether a venue is even available. The person running the event is usually doing it on top of another full-time job.</p>
+      <p style="font-size:var(--fs-lead); line-height:1.65;">We set out to fix that. So we built the tech, and put an expert team behind it, to get the right venue, the right price and a real plan in front of you in minutes instead of days, whatever the scale of the event.</p>
+      <p style="margin-top:20px; font-size:var(--fs-lead); line-height:1.55;"><strong>Hire Space is the intelligent venue platform for business events. Not a marketplace. Not a directory. A tech-powered venue-finding platform with an expert team behind it.</strong></p>
     </div>
     <div class="image" style="background-image: url('https://content.hirespace.com/hubfs/newsletter-images/bg-cover-hero-v2-1200x675.jpg');"></div>
   </div>
@@ -1749,7 +2132,7 @@
 <section class="slide pale" id="s7">
   <span class="eyebrow">Our value proposition</span>
   <h2 style="margin-bottom:8px;">How we want clients to feel</h2>
-  <p class="lead" style="color:var(--slate); max-width:58ch;">Three feelings. Every page, every email, every call should deliver at least one.</p>
+  <p class="lead">Three feelings. Every page, every email, every call should deliver at least one.</p>
 
   <div class="feelings">
     <div class="feeling">
@@ -1779,7 +2162,7 @@
 <section class="slide" id="s7b">
   <span class="eyebrow">Messaging pillars · 2026</span>
   <h2>The foundations of what we offer</h2>
-  <p class="lead" style="color:var(--slate); max-width:64ch;">Five pillars our value proposition sits on. Most of the things we say about Hire Space lean on one or more of them. Use them when they help, but don't feel obliged to tick every box in every piece of copy.</p>
+  <p class="lead">Five pillars our value proposition sits on. Most of the things we say about Hire Space lean on one or more of them. Use them when they help, but don't feel obliged to tick every box in every piece of copy.</p>
 
   <div class="pillars">
     <div class="pillar">
@@ -1816,7 +2199,7 @@
 <section class="slide" id="s8">
   <span class="eyebrow">Our service tiers</span>
   <h2 style="margin-bottom:4px;">Three tiers, one platform</h2>
-  <p style="color:var(--slate); font-size:13px; margin-bottom:0; max-width:none;">Every client starts on Hire Space. As their events programme grows, so does the level of service and technology we wrap around them.</p>
+  <p class="slide-lead">Every client starts on Hire Space. As their events programme grows, so does the level of service and technology we wrap around them.</p>
 
   <div class="tier-grid">
     <div class="brand-card hs">
@@ -1887,11 +2270,47 @@
     </div>
   </div>
 
-  <div class="tier-footnote">
-    <strong>A separate dimension:</strong> within any account, individual enquiries are handled proportionally to their size. Above £15k is fully handled, £5k to £15k is semi-handled (two 15-minute calls, checkout link or Jill introduction), under £5k is suggest and fast track. These are internal enquiry tiers, not client-facing labels.
+  <div class="foot"><span>Service tiers</span><span>08</span></div>
+</section>
+
+<!-- ========== SLIDE 8b: AUDIENCES ========== -->
+<section class="slide pale" id="s8b">
+  <span class="eyebrow">Our audiences</span>
+  <h2 style="margin-bottom:4px;">Who we're writing for</h2>
+  <p class="slide-lead">Four archetypes cover most of our audience. The tone shifts for each, the rules don't.</p>
+
+  <div class="persona-grid">
+    <div class="persona">
+      <div class="p-badge">The Strategist</div>
+      <h4>Head of Events, Events Director</h4>
+      <p class="p-quote">"I need a partner that helps my team work smarter, not another agency telling me how to run events."</p>
+      <p class="p-what"><strong>Owns:</strong> strategy, budget, the team, reporting ROI to the board.</p>
+      <p class="p-how"><strong>Tone:</strong> peer-level. Respect their expertise. Lead with data, benchmarking and leverage. Never explain their own job.</p>
+    </div>
+    <div class="persona">
+      <div class="p-badge">The Coordinator</div>
+      <h4>Events Manager, SME Events Lead</h4>
+      <p class="p-quote">"I just need to find a good venue, fast, and not screw it up."</p>
+      <p class="p-what"><strong>Owns:</strong> day-to-day execution, under pressure, minimal admin tolerance.</p>
+      <p class="p-how"><strong>Tone:</strong> helpful, specific, energetic. Speed matters. Make them look good to their boss.</p>
+    </div>
+    <div class="persona">
+      <div class="p-badge">The Accidental Booker</div>
+      <h4>PA, Office Manager, HR, social committee</h4>
+      <p class="p-quote">"I'm not an events person, I've just been asked to sort the team away day."</p>
+      <p class="p-what"><strong>Owns:</strong> one to a handful of events a year. Wants guidance and reassurance.</p>
+      <p class="p-how"><strong>Tone:</strong> warm, explanatory, zero jargon. Lean on ease and the human team behind the tech.</p>
+    </div>
+    <div class="persona">
+      <div class="p-badge">The Buyer</div>
+      <h4>Procurement, Finance, Commercial</h4>
+      <p class="p-quote">"Show me the consolidated contract, the spend data and the risk profile."</p>
+      <p class="p-what"><strong>Owns:</strong> approval, supplier rationalisation, audit, compliance.</p>
+      <p class="p-how"><strong>Tone:</strong> measured, credential-led, factual. Lead with consolidation, T&amp;Cs, spend visibility.</p>
+    </div>
   </div>
 
-  <div class="foot"><span>Service tiers</span><span>08</span></div>
+  <div class="foot"><span>Our audiences</span><span>09</span></div>
 </section>
 
 <!-- ========== SLIDE 9: VOICE DIVIDER ========== -->
@@ -1902,7 +2321,7 @@
     <h1 style="font-size:96px;">How we sound</h1>
     <span class="rule"></span>
   </div>
-  <div class="foot"><span>Part two · How we sound</span><span>09</span></div>
+  <div class="foot"><span>Part two · How we sound</span><span>10</span></div>
 </section>
 
 <!-- ========== SLIDE 10: BRAND VOICE ========== -->
@@ -1912,7 +2331,7 @@
   <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap:40px; align-items:start; margin-bottom:24px;">
     <div>
       <h2 style="font-size:32px; line-height:1.12; margin-bottom:14px;">Informative but informal, warm and never corporate</h2>
-      <p style="font-size:14px; line-height:1.55;">We write like we’re explaining something to a colleague over coffee, not presenting at a board meeting. Our sentences are usually short and active, but we mix in longer ones when a thought needs room to breathe. Details are concrete: named venues, real numbers, what actually happened last Tuesday rather than "a memorable afternoon of engagement". We lean on experience over opinion: "I had great feedback from the Palm Court last October" beats "I think the Palm Court would be great".</p>
+      <p class="slide-lead">We write like we’re explaining something to a colleague over coffee, not presenting at a board meeting. Our sentences are usually short and active, but we mix in longer ones when a thought needs room to breathe. Details are concrete: named venues, real numbers, what actually happened last Tuesday rather than "a memorable afternoon of engagement". We lean on experience over opinion: "I had great feedback from the Palm Court last October" beats "I think the Palm Court would be great".</p>
     </div>
 
     <div>
@@ -1953,14 +2372,14 @@
     </div>
   </div>
 
-  <div class="foot"><span>Brand voice</span><span>10</span></div>
+  <div class="foot"><span>Brand voice</span><span>11</span></div>
 </section>
 
 <!-- ========== SLIDE 11: AI WRITING RULES ========== -->
 <section class="slide pale" id="s11">
   <span class="eyebrow">AI writing rules</span>
   <h2>Prompting LLM Models</h2>
-  <p style="color:var(--slate); max-width:70ch; font-size:16px; line-height:1.6; margin-bottom:24px;">These rules are how we keep AI-written Hire Space copy sounding like us and not like everyone else's AI. Bake them into the prompt, the system message or the custom instructions in whichever tool you're using. They apply to any piece of customer-facing copy an AI helps you draft: marketing, blog, newsletter, social, proposals, tenders, ad copy, venue descriptions.</p>
+  <p class="slide-lead">These rules are how we keep AI-written Hire Space copy sounding like us and not like everyone else's AI. Bake them into the prompt, the system message or the custom instructions in whichever tool you're using. They apply to any piece of customer-facing copy an AI helps you draft: marketing, blog, newsletter, social, proposals, tenders, ad copy, venue descriptions.</p>
 
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:32px;">
     <div>
@@ -2008,7 +2427,7 @@
     </div>
   </div>
 
-  <div class="foot"><span>AI writing rules</span><span>11</span></div>
+  <div class="foot"><span>AI writing rules</span><span>12</span></div>
 </section>
 
 <!-- ========== SLIDE 12: BEFORE / AFTER ========== -->
@@ -2041,14 +2460,14 @@
     </div>
   </div>
 
-  <div class="foot"><span>Before &amp; after</span><span>12</span></div>
+  <div class="foot"><span>Before &amp; after</span><span>13</span></div>
 </section>
 
 <!-- ========== SLIDE 13: EMOJI IN PRACTICE ========== -->
 <section class="slide pale" id="s13">
   <span class="eyebrow">Emoji in practice</span>
   <h2>When emoji help and when they hurt</h2>
-  <p class="lead" style="color:var(--slate); max-width:64ch;">The rule is simple: emoji belong where conversation happens and nowhere else. Use them as accents, not punctuation.</p>
+  <p class="lead">The rule is simple: emoji belong where conversation happens and nowhere else. Use them as accents, not punctuation.</p>
 
   <div class="do-dont" style="margin-top:36px;">
     <div class="dd-col">
@@ -2075,7 +2494,36 @@
     <p style="font-size:15px; margin:0;">The Hire Space brand emoji is <strong>💚</strong> (the green heart). Use it at sign-offs and sparingly in body. Never stack emojis as punctuation and never use emoji as a substitute for a verb.</p>
   </div>
 
-  <div class="foot"><span>Emoji in practice</span><span>13</span></div>
+  <div class="foot"><span>Emoji in practice</span><span>14</span></div>
+</section>
+
+<!-- ========== SLIDE 13b: WHAT WE CALL OURSELVES ========== -->
+<section class="slide" id="s13b">
+  <span class="eyebrow">Verbal identity</span>
+  <h2 style="margin-bottom:4px;">What we call ourselves</h2>
+  <p class="slide-lead">A small set of approved descriptions. Pick the one that fits the length, never invent new ones for one-off campaigns.</p>
+
+  <div class="boiler-grid">
+    <div class="boiler">
+      <div class="b-label">Long form · press, partnerships, decks</div>
+      <p class="b-text">Hire Space is the intelligent venue platform for business events, built and run by industry experts. Deep Research finds any venue on the planet, Instant Quotes price it in seconds, and our team handles everything from brief to delivery, for companies at any scale.</p>
+    </div>
+    <div class="boiler">
+      <div class="b-label">One-liner · hero lines, first email, intros</div>
+      <p class="b-text">The intelligent venue platform for business events, backed by industry experts.</p>
+    </div>
+    <div class="boiler rules">
+      <div class="b-label">Name rules</div>
+      <ul class="b-rules">
+        <li>Always "Hire Space", two words. Capital H, capital S.</li>
+        <li>Never "HS", "HSP", "Hire Space Pro" or "HireSpace".</li>
+        <li>"Hire Space 360" takes a space before 360. Never "HS360" in public copy.</li>
+        <li>Product proper nouns keep their capitals: Deep Research, Instant Quotes, Concierge.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot"><span>What we call ourselves</span><span>15</span></div>
 </section>
 
 <!-- ========== SLIDE 14: DESIGN DIVIDER ========== -->
@@ -2086,45 +2534,71 @@
     <h1 style="font-size:96px;">How we look</h1>
     <span class="rule"></span>
   </div>
-  <div class="foot"><span>Part three · How we look</span><span>14</span></div>
+  <div class="foot"><span>Part three · How we look</span><span>16</span></div>
 </section>
 
 <!-- ========== SLIDE 15: LOGO ========== -->
 <section class="slide" id="s15">
   <span class="eyebrow">Logo</span>
-  <div class="two-col" style="grid-template-columns: 1.1fr 1.25fr; gap:40px;">
+  <div class="two-col" style="grid-template-columns: 1fr 1.35fr; gap:36px;">
     <div>
-      <h2 style="max-width:16ch; margin-bottom:18px;">The Hire Space mark</h2>
-      <p>Our logo is a simple wordmark paired with the house icon. The full-colour version lives on white or very pale backgrounds. On dark or saturated backgrounds, reach for the white monochrome lockup.</p>
-      <p>Never edit, distort, recolour, re-space or reconfigure the logo. Treat it as a single unit.</p>
+      <h2 style="max-width:16ch; margin-bottom:14px;">The Hire Space mark</h2>
+      <p class="slide-lead">Our logo is a simple wordmark paired with the house icon. The full-colour version lives on white or very pale backgrounds. On dark or saturated backgrounds, reach for the white monochrome lockup. Never edit, distort, recolour, re-space or reconfigure it, treat it as a single unit.</p>
 
-      <h4 style="font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green); margin-top:22px; margin-bottom:10px;">The icon on its own</h4>
-      <p style="font-size:14px; line-height:1.55;">The house-in-circle icon can stand alone where the full lockup would be too wide or too detailed to read. Think: favicons, app icons, social profile pictures, small UI elements, watermarks, avatars and any context where the wordmark has already been established on the same page.</p>
+      <div class="logo-callout">
+        <div class="lc-label">The icon on its own</div>
+        <p>The house-in-circle icon can stand alone where the full lockup would be too wide or too detailed to read. Think favicons, app icons, social profile pictures, small UI elements, watermarks and any context where the wordmark has already been established.</p>
+      </div>
+
+      <a class="asset-link" href="https://drive.google.com/drive/folders/1ZH4jSssDa9aMpisfGXLz9EO4oM_wKyyd?usp=drive_link" target="_blank" rel="noopener">
+        <span class="al-icon"><i class="fa-solid fa-download"></i></span>
+        <span class="al-text">
+          <strong>Download logo assets</strong>
+          <span>Master Logo Folder on Google Drive, all variants and file types</span>
+        </span>
+      </a>
     </div>
 
     <div>
-      <div class="logo-grid">
+      <div class="logo-section-label">Hire Space</div>
+      <div class="logo-grid compact">
         <div class="logo-well white">
-          <img style="height:64px; width:auto; display:block;" src="./assets/hire-space-logo-primary.png" alt="Hire Space logo, full colour">
+          <img style="height:46px; width:auto; display:block;" src="./assets/hire-space-logo-primary.png" alt="Hire Space logo, full colour">
           <span class="cap">Primary on white</span>
         </div>
         <div class="logo-well pale">
-          <img style="height:64px; width:auto; display:block;" src="./assets/hire-space-logo-primary.png" alt="Hire Space logo on pale background">
+          <img style="height:46px; width:auto; display:block;" src="./assets/hire-space-logo-primary.png" alt="Hire Space logo on pale background">
           <span class="cap">Primary on pale</span>
         </div>
         <div class="logo-well dark">
-          <img style="height:55px; width:auto; display:block;" src="./assets/hire-space-logo-white.png" alt="Hire Space logo white on dark">
+          <img style="height:36px; width:auto; display:block;" src="./assets/hire-space-logo-white.png" alt="Hire Space logo white on dark">
           <span class="cap" style="color:rgba(255,255,255,0.65);">White on dark</span>
         </div>
         <div class="logo-well white icon-well">
-          <img style="height:72px; width:auto; display:block;" src="./assets/hire-space-mark.png" alt="Hire Space icon on its own">
+          <img style="height:52px; width:auto; display:block;" src="./assets/hire-space-mark.png" alt="Hire Space icon on its own">
+          <span class="cap">Icon alone</span>
+        </div>
+      </div>
+
+      <div class="logo-section-label" style="margin-top:16px;">Hire Space 360</div>
+      <div class="logo-grid compact">
+        <div class="logo-well white">
+          <img style="height:42px; width:auto; display:block;" src="./assets/hire-space-360-primary.png" alt="Hire Space 360 logo">
+          <span class="cap">Primary on white</span>
+        </div>
+        <div class="logo-well dark">
+          <img style="height:34px; width:auto; display:block;" src="./assets/hire-space-360-white.png" alt="Hire Space 360 white on dark">
+          <span class="cap" style="color:rgba(255,255,255,0.65);">White on dark</span>
+        </div>
+        <div class="logo-well white icon-well">
+          <img style="height:48px; width:auto; display:block;" src="./assets/hire-space-360-mark.png" alt="Hire Space 360 icon on its own">
           <span class="cap">Icon alone</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="foot"><span>Logo</span><span>15</span></div>
+  <div class="foot"><span>Logo</span><span>17</span></div>
 </section>
 
 <!-- ========== SLIDE 16: LOGO DO’S AND DON’TS ========== -->
@@ -2142,7 +2616,7 @@
     </div>
     <div class="cell">
       <div class="swatch" style="background:var(--ink);">
-        <img style="max-height:38px; width:auto; max-width:80%;" src="./assets/hire-space-logo-white.png" alt="">
+        <img style="max-height:34px; width:auto; max-width:80%;" src="./assets/hire-space-logo-white.png" alt="">
       </div>
       <span class="badge ok">✓</span>
       <div>Do use monochrome on dark backgrounds</div>
@@ -2171,7 +2645,7 @@
     <img src="./assets/exclusion-zone.png" alt="Exclusion zone diagram showing half-icon-height buffer around the Hire Space logo">
   </div>
 
-  <div class="foot"><span>Logo · do’s and don’ts</span><span>16</span></div>
+  <div class="foot"><span>Logo · do’s and don’ts</span><span>18</span></div>
 </section>
 
 <!-- ========== SLIDE 18: FULL PALETTE ========== -->
@@ -2265,7 +2739,7 @@
 
   </div>
 
-  <div class="foot"><span>Palette</span><span>17</span></div>
+  <div class="foot"><span>Palette</span><span>19</span></div>
 </section>
 
 <!-- ========== SLIDE 19: TYPOGRAPHY ========== -->
@@ -2303,7 +2777,7 @@
     </div>
   </div>
 
-  <div class="foot"><span>Typography</span><span>18</span></div>
+  <div class="foot"><span>Typography</span><span>20</span></div>
 </section>
 
 <!-- ========== SLIDE 19b: DROP SHADOWS / ELEVATION ========== -->
@@ -2346,7 +2820,7 @@
     </ul>
   </div>
 
-  <div class="foot"><span>Elevation</span><span>19</span></div>
+  <div class="foot"><span>Elevation</span><span>21</span></div>
 </section>
 
 <!-- ========== SLIDE 20: PHOTOGRAPHY ========== -->
@@ -2368,7 +2842,7 @@
     </div>
   </div>
 
-  <div class="foot"><span>Photography</span><span>20</span></div>
+  <div class="foot"><span>Photography</span><span>22</span></div>
 </section>
 
 <!-- ========== SLIDE 21: ICONOGRAPHY ========== -->
@@ -2377,8 +2851,8 @@
   <div class="two-col" style="grid-template-columns: 1fr 1.3fr;">
     <div>
       <h2 style="max-width:14ch; margin-bottom:14px;">Bold icons, sometimes in a circle</h2>
-      <p style="font-size:14px; line-height:1.55;">Icons are how we signal at a glance. They support a headline or a stat, they don’t try to carry the content themselves.</p>
-      <p style="font-size:14px; line-height:1.55;"><strong>House rules:</strong></p>
+      <p class="slide-lead">Icons are how we signal at a glance. They support a headline or a stat, they don’t try to carry the content themselves.</p>
+      <p class="slide-lead"><strong>House rules:</strong></p>
       <ul class="icon-rules" style="font-size:13px;">
         <li>Use <a href="https://fontawesome.com/search?o=r&amp;s=solid&amp;f=classic" style="color:var(--green); text-decoration:none; border-bottom:1px solid rgba(0,168,44,0.35);">Font Awesome Solid</a> as the default set.</li>
         <li>Dark ink for inline and navigation.</li>
@@ -2443,13 +2917,125 @@
     </div>
   </div>
 
-  <div class="foot"><span>Iconography</span><span>21</span></div>
+  <div class="foot"><span>Iconography</span><span>23</span></div>
+</section>
+
+<!-- ========== SLIDE 18b: ACCESSIBILITY ========== -->
+<section class="slide" id="s18b">
+  <span class="eyebrow">Accessibility</span>
+  <h2 style="margin-bottom:4px;">Easy to read, for everyone</h2>
+  <p class="slide-lead">Three things to get right so the brand works for readers who can't see it the way we do.</p>
+
+  <div class="a11y-visual-grid">
+
+    <!-- 1. Contrast -->
+    <div class="a11y-visual-card">
+      <div class="a11y-visual-label">Enough contrast</div>
+      <div class="a11y-compare">
+        <div class="a11y-demo good">
+          <div class="demo-headline">Find your venue</div>
+          <div class="demo-body">Every venue on the planet, priced and ready to book.</div>
+          <div class="demo-badge tick">Do</div>
+        </div>
+        <div class="a11y-demo bad">
+          <div class="demo-headline faint">Find your venue</div>
+          <div class="demo-body faint">Every venue on the planet, priced and ready to book.</div>
+          <div class="demo-badge cross">Don't</div>
+        </div>
+      </div>
+      <p class="a11y-note">Dark ink on white is our default. Green on white works for buttons and headings. Don't use pale grey or green for body text.</p>
+    </div>
+
+    <!-- 2. Never colour alone -->
+    <div class="a11y-visual-card">
+      <div class="a11y-visual-label">Never colour alone</div>
+      <div class="a11y-compare">
+        <div class="a11y-demo bad">
+          <div class="status-row"><span class="dot red-dot"></span>Contract</div>
+          <div class="status-row"><span class="dot green-dot"></span>Contract</div>
+          <div class="demo-badge cross">Don't</div>
+        </div>
+        <div class="a11y-demo good">
+          <div class="status-row"><i class="fa-solid fa-xmark red-ico"></i>Pending</div>
+          <div class="status-row"><i class="fa-solid fa-check green-ico"></i>Signed</div>
+          <div class="demo-badge tick">Do</div>
+        </div>
+      </div>
+      <p class="a11y-note">Status and success or error states need an icon or a label too. Don't make the reader rely on seeing green versus red.</p>
+    </div>
+
+    <!-- 3. Alt text -->
+    <div class="a11y-visual-card">
+      <div class="a11y-visual-label">Alt text that describes, not sells</div>
+      <div class="alt-frame">
+        <div class="alt-image"></div>
+        <div class="alt-captions">
+          <div class="alt-line bad"><span class="alt-mark cross">✗</span> "Stunning London venue"</div>
+          <div class="alt-line good"><span class="alt-mark tick">✓</span> "Long oak table set for 20 at The Ned, Holborn"</div>
+        </div>
+      </div>
+      <p class="a11y-note">Alt text is for people who can't see the image. Describe what's actually there, not the marketing brief.</p>
+    </div>
+
+  </div>
+
+  <div class="foot"><span>Accessibility</span><span>24</span></div>
+</section>
+
+<!-- ========== SLIDE 21b: BRAND IN THE WILD ========== -->
+<section class="slide pale" id="s21b">
+  <span class="eyebrow">In use</span>
+  <h2 style="margin-bottom:4px;">Brand in the wild</h2>
+  <p class="slide-lead">The rules applied. Real examples of how the brand shows up across the places it lives.</p>
+
+  <div class="wild-grid">
+    <div class="wild-card">
+      <div class="w-label">Client proposal header</div>
+      <div class="w-viz proposal-header">
+        <div class="proposal-eyebrow">HIRE SPACE · PROPOSAL</div>
+        <div class="proposal-title">Q3 London strategy day</div>
+        <div class="proposal-meta">12 Aug 2026 · 120 guests · £12k to £18k</div>
+        <div class="proposal-mark"><img src="./assets/hire-space-logo-primary.png" style="height:18px;"></div>
+      </div>
+    </div>
+
+    <div class="wild-card">
+      <div class="w-label">Social card · LinkedIn</div>
+      <div class="w-viz social-card">
+        <div class="social-eyebrow">HIRE SPACE · TRENDS 2026</div>
+        <div class="social-title">Five venue trends shaping business events this year</div>
+      </div>
+    </div>
+
+    <div class="wild-card">
+      <div class="w-label">Landing page hero</div>
+      <div class="w-viz landing">
+        <div style="font-family:var(--heading); font-weight:900; font-size:22px; line-height:1.1;">Find your venue, in minutes.</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.7); margin-top:8px; line-height:1.5;">Every venue on the planet. Data-backed pricing. One place, one team, one standard.</div>
+        <div style="margin-top:12px;"><span class="landing-btn">Start a brief</span></div>
+      </div>
+    </div>
+
+    <div class="wild-card">
+      <div class="w-label">Venue tile · product</div>
+      <div class="w-viz venue-tile">
+        <div class="venue-img"></div>
+        <div style="padding:10px 12px;">
+          <div style="font-weight:700; font-size:13px;">The Ned</div>
+          <div style="font-size:11px; color:var(--slate); margin-top:2px;">London · 10 to 280 guests</div>
+          <div style="font-size:11px; color:var(--green); font-weight:700; margin-top:6px;">£4,200 to £6,800 · medium confidence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Brand in the wild</span><span>25</span></div>
 </section>
 
 <!-- ========== SLIDE 22: BACK COVER ========== -->
 <section class="slide back" id="s22">
   <div>
-    <img src="./assets/hire-space-logo-white.png" alt="Hire Space" style="height:48px; width:auto; display:block;">
+    <img src="./assets/hire-space-logo-white.png" alt="Hire Space" style="height:42px; width:auto; display:block;">
   </div>
 
   <div>
