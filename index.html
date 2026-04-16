@@ -626,38 +626,99 @@
 
   /* ------- Sub-brands slide ------- */
 
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
   .brand-card {
-    padding: 28px 32px 24px;
+    padding: 22px 22px 18px;
     border-radius: 4px;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow: var(--shadow-2);
   }
   .brand-card.hs {
     background: var(--paper);
     border: 1px solid var(--line);
   }
+  .brand-card.preferred {
+    background: var(--paper);
+    border: 1px solid var(--green);
+  }
   .brand-card.hs360 {
-    /* Grey-black, matching 360.hirespace.com card backgrounds */
     background: #273033;
     color: var(--paper);
-    position: relative;
   }
-  .brand-card .big-mark { margin-bottom: 24px; }
-  .brand-card h3 { margin-bottom: 8px; font-size: 24px; }
+  .brand-card .tier-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .brand-card .tier-head img { height: 24px; width: auto; }
+  .brand-card h3 { margin-bottom: 2px; font-size: 16px; }
+  .brand-card .tier-sub {
+    font-size: 11px;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .brand-card.hs360 .tier-sub { color: rgba(255,255,255,0.55); }
   .brand-card .one-liner {
-    font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 18px;
+    font-size: 12px;
+    line-height: 1.45;
+    margin-bottom: 12px;
     max-width: none;
-    padding-right: 8px;
   }
-  .brand-card .hs360 h3 { color: var(--white); }
-  .brand-card ul { padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.7; }
-  .brand-card li::marker { color: var(--green); }
-  .brand-card.hs360 li::marker { color: var(--green-soft); }
+  .brand-card.hs360 .one-liner { color: rgba(255,255,255,0.82); }
+  .brand-card .inc-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .brand-card.hs360 .inc-label { color: rgba(255,255,255,0.5); }
+  .brand-card .inc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 auto;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  .brand-card .inc-list li {
+    padding: 2px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .brand-card .inc-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 8px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .brand-card.hs360 .inc-list li::before { color: var(--green); }
+  .brand-card .card-foot {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(12, 19, 24, 0.08);
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--slate);
+  }
+  .brand-card.hs360 .card-foot {
+    border-top-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+  }
+  .brand-card .card-foot strong { color: var(--ink); font-weight: 600; }
+  .brand-card.hs360 .card-foot strong { color: var(--paper); }
 
   /* ------- Section dividers (large title on color) ------- */
 
@@ -1585,7 +1646,7 @@
       <a class="toc-row" href="#s6"><span class="label">Our brand promise</span> <span class="n">05</span></a>
       <a class="toc-row" href="#s7"><span class="label">How we want clients to feel</span> <span class="n">06</span></a>
       <a class="toc-row" href="#s7b"><span class="label">Messaging pillars</span> <span class="n">07</span></a>
-      <a class="toc-row" href="#s8"><span class="label">Hire Space &amp; Hire Space 360</span> <span class="n">08</span></a>
+      <a class="toc-row" href="#s8"><span class="label">Service tiers</span> <span class="n">08</span></a>
     </div>
 
     <div class="toc-block">
@@ -1733,51 +1794,82 @@
   <div class="foot"><span>Messaging pillars</span><span>07</span></div>
 </section>
 
-<!-- ========== SLIDE 8: SUB-BRANDS ========== -->
+<!-- ========== SLIDE 8: SERVICE TIERS ========== -->
 <section class="slide" id="s8">
-  <span class="eyebrow">Products &amp; sub-brands</span>
-  <h2 style="margin-bottom:6px;">Hire Space &amp; Hire Space 360</h2>
-  <p style="color:var(--slate); max-width:62ch; font-size:15px; margin-bottom:0;">Two products, one voice. The intelligent platform and the managed service sit under the same brand umbrella but speak slightly differently.</p>
+  <span class="eyebrow">Our service tiers</span>
+  <h2 style="margin-bottom:4px;">Three tiers, one platform</h2>
+  <p style="color:var(--slate); max-width:68ch; font-size:13px; margin-bottom:0;">Every client starts on Hire Space. As their events programme grows, so does the level of service and technology we wrap around them.</p>
 
-  <div class="two-col tight" style="margin-top:20px;">
+  <div class="tier-grid">
     <div class="brand-card hs">
-      <div>
-        <img src="./assets/hire-space-logo-primary.png" alt="Hire Space" style="height:38px; width:auto; display:block; margin-bottom: 18px;">
-        <h3>The intelligent platform</h3>
-        <p class="one-liner">A tech-powered business events expert. Fast, specific, confident about what we can do that no one else can.</p>
+      <div class="tier-head">
+        <img src="./assets/hire-space-mark.png" alt="Hire Space">
+        <h3>Hire Space</h3>
       </div>
-      <dl class="bullets">
-        <dt>Core product</dt>
-        <dd>Venue-finding platform with Deep Research and instant data-backed pricing.</dd>
-        <dt>Audience</dt>
-        <dd>PAs, marketing teams, office managers, social committees.</dd>
-        <dt>Voice</dt>
-        <dd>Expert, warm, conversational, specific. Confident, never corporate.</dd>
-        <dt>Colour lead</dt>
-        <dd>Hire Space Green <strong>#00A82C</strong>.</dd>
-      </dl>
+      <div class="tier-sub">The self-service platform</div>
+      <p class="one-liner">The intelligent venue-finding platform. Search, compare, get instant pricing and book directly. We chase venues for responses so you don't have to.</p>
+      <div class="inc-label">Included</div>
+      <ul class="inc-list">
+        <li>Deep Research</li>
+        <li>Instant Quotes</li>
+        <li>Direct booking</li>
+        <li>Automated venue chasing</li>
+      </ul>
+      <div class="card-foot">
+        <strong>Audience:</strong> Ad-hoc bookers, PAs, office managers, social committees.<br>
+        <strong>Voice:</strong> Expert, warm, conversational. Confident, never corporate.
+      </div>
+    </div>
+
+    <div class="brand-card preferred">
+      <div class="tier-head">
+        <img src="./assets/hire-space-mark.png" alt="Hire Space">
+        <h3>Preferred Clients</h3>
+      </div>
+      <div class="tier-sub">Platform plus dedicated support</div>
+      <p class="one-liner">For companies that book regularly. Everything on the platform, plus a personalised events homepage, Customised Deep Research, Concierge support on valuable enquiries and priority invites to new venue openings.</p>
+      <div class="inc-label">Included</div>
+      <ul class="inc-list">
+        <li>Everything in Platform, plus:</li>
+        <li>Customised Deep Research</li>
+        <li>Events homepage</li>
+        <li>Named account contact</li>
+        <li>Concierge on valuable enquiries</li>
+        <li>Priority venue opening invites</li>
+        <li>Benchmarking insights</li>
+      </ul>
+      <div class="card-foot">
+        <strong>Audience:</strong> Recurring bookers, companies with multiple people booking across teams.<br>
+        <strong>Voice:</strong> Same platform voice, slightly more relationship-driven.
+      </div>
     </div>
 
     <div class="brand-card hs360">
-      <div>
-        <img src="./assets/hire-space-360-white.png" alt="Hire Space 360" style="height:38px; width:auto; display:block; margin-bottom: 18px;">
-        <h3>The managed service</h3>
-        <p class="one-liner" style="color:rgba(255,255,255,0.82);">A senior account director presenting to procurement. Premium, evidence-led, still unmistakably human.</p>
+      <div class="tier-head">
+        <img src="./assets/hire-space-360-mark.png" alt="Hire Space 360" style="height:20px;">
+        <h3 style="color:var(--paper);">Hire Space 360</h3>
       </div>
-      <dl class="bullets dark">
-        <dt>Core product</dt>
-        <dd>End-to-end event sourcing and delivery. Single supplier, one AP contact, one set of T&amp;Cs, spend dashboard.</dd>
-        <dt>Audience</dt>
-        <dd>Heads of events, finance, procurement.</dd>
-        <dt>Concierge</dt>
-        <dd>Our Concierge team delivers large and complex events end-to-end.</dd>
-        <dt>Voice</dt>
-        <dd>More polished, measured, contractions used sparingly.</dd>
-      </dl>
+      <div class="tier-sub">The managed service</div>
+      <p class="one-liner">End-to-end event sourcing and delivery. One supplier, one AP contact, one set of T&amp;Cs, full visibility over spend.</p>
+      <div class="inc-label">Included</div>
+      <ul class="inc-list">
+        <li>Everything in Preferred, plus:</li>
+        <li>Dedicated account director</li>
+        <li>Consolidated contracting</li>
+        <li>Centralised payments</li>
+        <li>Spend dashboard</li>
+        <li>Sharable proposals</li>
+        <li>Venue marketplace</li>
+        <li>Full Concierge delivery</li>
+      </ul>
+      <div class="card-foot">
+        <strong>Audience:</strong> Heads of events, finance, procurement, enterprise accounts.<br>
+        <strong>Voice:</strong> More polished, measured, evidence-led. Contractions used sparingly.
+      </div>
     </div>
   </div>
 
-  <div class="foot"><span>Products &amp; sub-brands</span><span>08</span></div>
+  <div class="foot"><span>Service tiers</span><span>08</span></div>
 </section>
 
 <!-- ========== SLIDE 9: VOICE DIVIDER ========== -->
