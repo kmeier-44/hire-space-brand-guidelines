@@ -704,6 +704,23 @@
     color: var(--green);
     flex-shrink: 0;
   }
+  .brand-card .inc-list .inc-note {
+    font-size: 9px;
+    color: var(--slate);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .brand-card.hs360 .inc-list .inc-note { color: rgba(255,255,255,0.45); }
+  .tier-footnote {
+    margin-top: 14px;
+    padding: 10px 16px;
+    background: rgba(12, 19, 24, 0.03);
+    border-left: 3px solid var(--green);
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--slate);
+  }
+  .tier-footnote strong { color: var(--ink); font-weight: 600; }
   .brand-card.hs360 .inc-list li::before { color: var(--green); }
   .brand-card .card-foot {
     margin-top: 10px;
@@ -1777,7 +1794,7 @@
     <div class="pillar">
       <div class="num">Pillar 03</div>
       <h4>Know what it costs, right now</h4>
-      <p>Data-backed price estimate the moment a brief lands. Over budget? The platform surfaces cheaper alternatives automatically.</p>
+      <p>Indicative, data-backed pricing the moment a brief lands, always shown as a range with a confidence level. Not a quote pretending to be a quote. Over budget? The platform surfaces cheaper alternatives automatically.</p>
     </div>
     <div class="pillar">
       <div class="num">Pillar 04</div>
@@ -1810,8 +1827,8 @@
       <p class="one-liner">The intelligent venue-finding platform. Search, compare, get instant pricing and book directly. We chase venues for responses so you don't have to.</p>
       <div class="inc-label">Included</div>
       <ul class="inc-list">
-        <li>Deep Research</li>
-        <li>Instant Quotes</li>
+        <li>Deep Research <span class="inc-note">Fast, Normal, For Business</span></li>
+        <li>Instant Quotes <span class="inc-note">data-backed ranges</span></li>
         <li>Direct booking</li>
         <li>Automated venue chasing</li>
       </ul>
@@ -1869,6 +1886,10 @@
     </div>
   </div>
 
+  <div class="tier-footnote">
+    <strong>A separate dimension:</strong> within any account, individual enquiries are handled proportionally to their size. Above £15k is fully handled, £5k to £15k is semi-handled (two 15-minute calls, checkout link or Jill introduction), under £5k is suggest and fast track. These are internal enquiry tiers, not client-facing labels.
+  </div>
+
   <div class="foot"><span>Service tiers</span><span>08</span></div>
 </section>
 
@@ -1890,7 +1911,7 @@
   <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap:40px; align-items:start;">
     <div>
       <h2 style="font-size:34px; line-height:1.12;">Informative but informal, warm and never corporate</h2>
-      <p>We write like we’re explaining something to a colleague over coffee, not presenting at a board meeting. Our sentences are usually short and active, but we mix in longer ones when a thought needs room to breathe. The details are always concrete: named venues, real numbers, what actually happened last Tuesday rather than "a memorable afternoon of engagement".</p>
+      <p>We write like we’re explaining something to a colleague over coffee, not presenting at a board meeting. Our sentences are usually short and active, but we mix in longer ones when a thought needs room to breathe. The details are always concrete: named venues, real numbers, what actually happened last Tuesday rather than "a memorable afternoon of engagement". We lean on experience over opinion too: "I had great feedback from the Palm Court last October" beats "I think the Palm Court would be great".</p>
 
       <div class="do-dont" style="margin-top:28px;">
         <div class="dd-col">
